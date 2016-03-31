@@ -1,0 +1,31 @@
+table:user
+	mobile_number:string
+	name:string
+	location:string
+	city:string
+	country:string
+	dob:datetime
+	gender:string
+	marital_status:string
+	designation:string
+
+	has_many projects
+	has_many pictures, as: :pictureable
+
+table:project 
+	name:string
+	number:string
+	user_id:integer
+	priority:string
+	client:string
+	contact_person:string
+	status:string
+	description:string
+	project_value:string
+	is_qoutation:boolean
+	quotation_no:string
+	quotation_status:string
+	quotation_value:string
+	qoutation_submission_date:datetime
+
+	belongs_to user

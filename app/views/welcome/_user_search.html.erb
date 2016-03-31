@@ -1,0 +1,9 @@
+<h2>Search results for users (total: <%= user_array.size %>) </h2>
+<div class="hr-line-dashed"></div> 
+<% user_array.each do |user| %>
+	<h3>USER: <a target="_blank" href="https://www.instagram.com/<%= user["username"] %>"><%= user["username"] %></a></h3>
+	<p><b>NAME: </b><%= user["full_name"] %></p>
+	<p><b>BIO: </b><%= user["bio"] %></p>
+	<p><img src="<%= user["profile_picture"] %>" height="100" width="100"></p>
+	<div class="hr-line-dashed"></div> 
+<% end %>

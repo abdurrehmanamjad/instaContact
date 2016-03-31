@@ -1,0 +1,79 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Title of the Form content starting here -->
+      <div class="ibox float-e-margins">
+        <%= render 'shared/titlebox' , heading_main: "All form elements" , description_in_small: "With custom checbox and radion elements."%>
+        <!-- Content of the Form is starting here -->
+        <div class="ibox-content">
+          <%= form_for(user_content, html: {class: "form-horizontal"}) do |f| %>
+            
+            <!-- Error div for the form errors -->
+            <% if user_content.errors.any? %>
+              <div class="form-group">
+                <div id="error_explanation">
+                  <h2><%= pluralize(user_content.errors.count, "error") %> prohibited this user_content from being saved:</h2>
+                  <ul>
+                  <% user_content.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+            
+            <!-- Form fields are starting from here -->
+                          <!-- Form field -->
+              <div class="form-group">
+                              <!-- Form field for text area to apply editable text box -->
+                <%= f.label :json_body , class: 'col-sm-2 control-label' %>
+                <div class="col-sm-10">
+                  <%= f.text_area :json_body , class: 'form-control place_editor', placeholder: 'Please type here.' %>
+                </div>                
+                            </div>
+              <!-- Form elements separator -->
+              <div class="hr-line-dashed"></div>
+                        
+            <!-- Footer of the form containing buttons -->
+            <div class="form-group">
+              <div class="col-sm-4 col-sm-offset-2">
+                  <%= link_to "Cancel" , user_contents_path , class: "btn btn-white"  %>
+                  <%= f.submit 'Save changes' , class: 'btn btn-primary' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+<!-- Content for Javascript -->
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function() {
+      // Code and class for check boxes for future use
+      // $('.i-checks').iCheck({
+      //     checkboxClass: 'icheckbox_square-green',
+      //     radioClass: 'iradio_square-green',
+      // });
+      
+      // Code and class for text editor for future use
+      $('.place_editor').summernote();
+      var edit = function () {
+        $('.click2edit').summernote({ focus: true });
+      };
+      $("#edit").click(function () {
+        $('.click2edit').summernote({ focus: true });
+      });
+      $("#save").click(function () {
+        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+        $('.click2edit').destroy();
+      });
+      // Adding Css to give border to text editor
+      $(".note-editor").css("border", "solid 1px #e7eaec");
+    });
+  </script>
+<% end %>
+
+

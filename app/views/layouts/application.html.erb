@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <!-- Including CSS -->
+	<%= stylesheet_link_tag 'appviews', media: 'all' %>
+	
+	<%= stylesheet_link_tag 'cssanimations', media: 'all' %>
+	<%= stylesheet_link_tag 'dashboards', media: 'all' %>
+	<%= stylesheet_link_tag 'forms', media: 'all' %>
+	<%= stylesheet_link_tag 'gallery', media: 'all' %>
+	<%= stylesheet_link_tag 'graphs', media: 'all' %>
+	<%= stylesheet_link_tag 'mailbox', media: 'all' %>
+	<%= stylesheet_link_tag 'miscellaneous', media: 'all' %>
+	<%= stylesheet_link_tag 'tables', media: 'all' %>
+	<%= stylesheet_link_tag 'uielements', media: 'all' %>
+	<%= stylesheet_link_tag 'widgets', media: 'all' %>
+
+	<!-- Main CSS styles -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+
+	<!-- Main Javascript files -->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<!-- Commenting/ Hiding Skin configuration box -->
+  <!-- Wrapper-->
+  <div id="wrapper">
+      <!-- Navigation -->
+      <%= render 'layouts/navigation' %>
+      <!-- Page wraper -->
+      <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+          <!-- Page wrapper -->
+          <%= render 'layouts/topnavbar' %>
+          <!-- Main view  -->
+          <% if flash[:notice] %>
+					  <script type="text/javascript">
+					      toastr.options = {
+			            closeButton: true,
+			            progressBar: true,
+			            showMethod: 'slideDown',
+			            timeOut: 4000
+				        };
+					      toastr["success"]("<%= flash[:notice] %>")
+					  </script>
+					<% end %>
+          <%= yield %>
+          <!-- Footer -->
+          <%= render 'layouts/footer' %>
+      </div>
+      <!-- End page wrapper-->
+      <!-- Right sidebar -->
+      <%= render 'layouts/rightsidebar' %>
+  </div>
+  <!-- End wrapper-->
+
+	<!-- Including Javascripts -->
+	
+	<%= javascript_include_tag 'appviews' %> <!-- jQuery UI present -->
+	<%= javascript_include_tag 'cssanimations' %>
+	<%= javascript_include_tag 'dashboards' %>
+	<%= javascript_include_tag 'forms' %>
+	<%= javascript_include_tag 'gallery' %>
+	<%= javascript_include_tag 'graphs' %>
+	<%= javascript_include_tag 'mailbox' %>
+	<%= javascript_include_tag 'miscellaneous' %> <!-- jQuery UI present -->
+	<%= javascript_include_tag 'tables' %> <!-- jQuery UI present -->
+	<%= javascript_include_tag 'uielements' %>
+	<%= javascript_include_tag 'widgets' %>	
+
+	<!-- Yielding Javascripts from the pages -->
+	<%= yield :javascript %>
+</body>
+</html>

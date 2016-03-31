@@ -1,0 +1,8 @@
+$('.search-result').html("");
+<% if @content.present? %>
+	<% if @partial_name.present? %>
+		$('.search-result').append('<%= j render(:partial => "#{@partial_name}_search", :locals => { "#{@partial_name}_array".to_sym => @content}) %>');
+	<% end %>
+<% else %>
+	$('.search-result').append('<h3> No results found.</h3>');
+<% end %>

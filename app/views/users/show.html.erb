@@ -1,0 +1,59 @@
+<%= render 'shared/breadcrumb', type_of_page: "Show" , name_of_model: User, nav_urls_hash: { root_url => "Home" , users_path => 'Users' , "" => "Show" } %>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <%= render 'shared/titlebox' , heading_main: "All information" , description_in_small: "" %>
+            <div class="ibox-content">
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Username:
+                  	</h3>
+              		              			<%= @user.username %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	First name:
+                  	</h3>
+              		              			<%= @user.first_name %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Last name:
+                  	</h3>
+              		              			<%= @user.last_name %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Gender:
+                  	</h3>
+              		              			<%= @user.gender %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Address:
+                  	</h3>
+              		              			<%= @user.address %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	City:
+                  	</h3>
+              		              			<%= @user.city %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Country:
+                  	</h3>
+              		              			<%= @user.country %>
+              		              	</div>
+                        </div>
+            <div class="ibox-content">
+				<%= link_to 'Back', users_path, class: "btn btn-white" %>
+				<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>  
+    		</div>
+        </div>
+		</div>
+	</div>
+</div>

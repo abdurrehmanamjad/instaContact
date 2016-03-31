@@ -1,0 +1,7 @@
+<h2>Search results for tags (total: <%= tag_array.size %>) </h2>
+<div class="hr-line-dashed"></div> 
+<% tag_array.each do |tag| %>
+	<h3>NAME: <%= tag["name"] %></h3>
+	<p><b>MEDIA COUNT: </b><%= tag["media_count"] %></p>
+	<div class="hr-line-dashed"></div> 
+<% end %>

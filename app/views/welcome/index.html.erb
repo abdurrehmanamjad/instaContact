@@ -1,0 +1,21 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">IN+</h1>
+    </div>
+    <h3>Welcome to InstaContact</h3>
+    <div class="ibox float-e-margins">
+      <div class="ibox-content">
+        <p>
+            You can fetch your data by connecting your instagram account here.
+        </p>
+        <% if current_user.user_id %>
+          <p class="btn btn-success" style="width:100%;" >You are connected to Instagram</p>
+        <% else %>
+          <p>Please connect to instagram to unleash the full potential of application.</p>
+          <%= link_to 'Connect to instagram', get_ins_token_path, class: "btn btn-info", style: "width:100%;" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

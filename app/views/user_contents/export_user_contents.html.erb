@@ -1,0 +1,78 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-6">
+        <div class="ibox float-e-margins">
+           <h2>Select parameters to export data </h2>
+            <div class="ibox-content">
+            	<%= form_tag export_to_csv_path, html: {target: '_blank', class: "form-horizontal"} do %>
+                <div class="well well-sm">
+                  <h3>
+                    <%= "Please enter the name of the file" %>
+                  </h3>
+                    <%= text_field_tag 'file_name', nil, placeholder: "Enter the name...", required: true, class: "form-control" %>
+                </div>  
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "picture_urls", :enabled -%>
+                    <%= " Image urls of the post" -%>
+                  </h3>
+                </div>  
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "caption", :enabled -%>
+                    <%= " Caption" -%>
+                  </h3>
+                  
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "tags", :enabled -%>
+                    <%= " Tags" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "likes_count", :enabled -%>
+                    <%= " Count of likes" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "post_type", :enabled -%>
+                    <%= " Post type" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "location", :enabled -%>
+                    <%= " Location" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "comments_count", :enabled -%>
+                    <%= " Count of comments" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "created_time", :enabled -%>
+                    <%= " Created time" -%>
+                  </h3>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    <%= check_box_tag 'column_names[]', "instagram_link", :enabled -%>
+                    <%= " Instagram link" -%>
+                  </h3>
+                </div>
+            </div>
+          <div class="ibox-content">
+  				  <%= link_to 'Back', root_url, class: "btn btn-lg btn-white" %>
+            <%= submit_tag 'Export to CSV' , class: 'btn btn-lg btn-primary' %>
+      		</div>
+          <% end %>
+        </div>
+		</div>
+	</div>
+</div>

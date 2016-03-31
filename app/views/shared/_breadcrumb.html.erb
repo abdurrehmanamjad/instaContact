@@ -1,0 +1,14 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= type_of_page %> <%= name_of_model %></h2>
+    <ol class="breadcrumb">
+      <% size_of_hash = nav_urls_hash.size %>
+      <% nav_urls_hash.each_with_index do |nav, index| %>
+        <li class="<%= ((index == size_of_hash - 1)? 'text-info' : '') %>">
+          <a href="<%= nav.first %>"><%= nav.last %></a>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="col-lg-2"></div>
+</div>

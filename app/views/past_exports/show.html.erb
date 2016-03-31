@@ -1,0 +1,30 @@
+<%= render 'shared/breadcrumb', type_of_page: "Show" , name_of_model: 'Past Export', nav_urls_hash: { root_url => "Home" , past_exports_path => 'Past Exports' , "" => "Show" } %>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <%= render 'shared/titlebox' , heading_main: "All information" , description_in_small: "" %>
+            <div class="ibox-content">
+                          	<div class="well well-sm">
+                  	<h3>
+                    	User:
+                  	</h3>
+              		              			<%= @past_export.user_id %>
+              		              	</div>
+                          	<div class="well well-sm">
+                  	<h3>
+                    	Content:
+                  	</h3>
+              		    
+                  		<%= ((@past_export.content.present?)? @past_export.content.html_safe : "") %>
+              		              	</div>
+                        </div>
+            <div class="ibox-content">
+				<%= link_to 'Back', past_exports_path, class: "btn btn-white" %>
+				<%= link_to 'Edit', edit_past_export_path(@past_export), class: "btn btn-primary" %>  
+    		</div>
+        </div>
+		</div>
+	</div>
+</div>

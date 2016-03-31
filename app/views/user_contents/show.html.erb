@@ -1,0 +1,71 @@
+<%= render 'shared/breadcrumb', type_of_page: "Show" , name_of_model: 'User Content', nav_urls_hash: { root_url => "Home" , user_contents_path => 'User Contents' , "" => "Show" } %>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <%= render 'shared/titlebox' , heading_main: "Post information" , description_in_small: "" %>
+            <div class="ibox-content">
+            	<% json_object = JSON.parse(@user_content.json_body) %>
+                <div class="well well-sm">
+                  <h3>
+                    Image of the Post
+                  </h3>
+                  <img src= "<%= json_object['images']['thumbnail']['url'] %>" >
+                </div>  
+                <div class="well well-sm">
+                  <h3>
+                    Captions
+                  </h3>
+                  <%= json_object["caption"]["text"] %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Tags
+                  </h3>
+                  <%= json_object["tags"].join(" | ") %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Likes Count
+                  </h3>
+                  <%= json_object["likes"]["count"] %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Type of Post
+                  </h3>
+                  <%= json_object["type"] %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Location
+                  </h3>
+                  <%= ((json_object["location"].present?)? json_object["location"] : "location not present." ) %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Comments Count
+                  </h3>
+                  <%= json_object["comments"]["count"] %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Created Time of Post
+                  </h3>
+                  <%= Time.at(json_object["created_time"].to_i).to_s(:long) %>
+                </div>
+                <div class="well well-sm">
+                  <h3>
+                    Click to view on instagram
+                  </h3>
+                  <a href='<%= json_object["link"] %>' target="_blank"><%= json_object["link"] %></a>
+                </div>
+            </div>
+          <div class="ibox-content">
+  				  <%= link_to 'Back', user_contents_path, class: "btn btn-white" %>
+      		</div>
+        </div>
+		</div>
+	</div>
+</div>
