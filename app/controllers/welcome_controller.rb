@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
 		  update_user_data(user, basic_data, SCOPE, access_token)
 	  end
 
-	  flash[:notice] = "Successfully connected with Instagram"
+	  flash[:notice] = "Successfully connected to Instagram"
 	  redirect_to root_url
 	end
 
@@ -54,8 +54,6 @@ class WelcomeController < ApplicationController
 
 	def get_media_from_url(user, media_url, access_token)
 		user_recent_media_uri = media_url
-		puts media_url
-		puts "-----------------------------------------------------------------------------"
 	  response_media = HTTParty.get(user_recent_media_uri).parsed_response
 	  media_data = response_media["data"]
 	  if media_data.present?
